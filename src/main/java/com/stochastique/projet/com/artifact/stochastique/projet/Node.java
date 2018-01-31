@@ -15,10 +15,14 @@ public class Node {
 	}
 
 	public void next(Node previousNode, Node nextNode) {
-		this.previous = previousNode;
+		nextNode.setPrevious(previousNode);
 		addTheNextNode(nextNode);
 	}
 	
+	private void setPrevious(Node previousNode) {
+		this.previous = previousNode;	
+	}
+
 	private void addTheNextNode(Node nextNode){
 		if(this.left == null){
 			this.left = nextNode;
@@ -59,6 +63,13 @@ public class Node {
 		this.falseResult = falseResult;
 		
 	}
+
+	public Node getPrevious() {
+		
+		return this.previous;
+	}
+
+	
 
 	
 	

@@ -33,9 +33,9 @@ public class NodeEngine {
 			if(current.getRight() != null){
 				nodes.add(current.getRight());
 			}
-			double trueResult = MakeCalculForTheTrue(current.getDataEntry());
+			double trueResult = MakeCalculForTheTrue(current,current.getDataEntry());
 			current.setTrueResult(trueResult);
-			double falseResult = MakeCalculForTheFalse(current.getDataEntry());
+			double falseResult = MakeCalculForTheFalse(current,current.getDataEntry());
 			current.setFalseResult(falseResult);
 			nodesResults.add(new ResultDatas(current.getNames(),trueResult,falseResult));
 			nodes.remove(0);
@@ -55,27 +55,27 @@ public class NodeEngine {
 
 
 
-	public double MakeCalculForTheTrue(DataEntry data) {
+	public double MakeCalculForTheTrue(Node current, DataEntry data) {
 		
 		Probability proba = new Probability(data);
 		double firstResult = proba.ObtainTheCurrentNodeValueIsTrue();
 		double secondResult = proba.ObtainTheCurrentNodeValueIsFalse();
-		double lastNodeFalseResult = Root.getDataEntry().getLastNodeFalse().getSecond();
-		double lastNodeTrueResult = Root.getDataEntry().getLastNodeFalse().getFirst();
+		double lastNodeFalseResult = current.getPrevious().getDataEntry().getLastNodeFalse().getSecond();
+		double lastNodeTrueResult = current.getPrevious().getDataEntry().getLastNodeFalse().getFirst();
 		
 		
 		return calculs(firstResult, lastNodeFalseResult, secondResult, lastNodeTrueResult);
 	}
 	
-	public double MakeCalculForTheFalse(DataEntry data) {
+	public double MakeCalculForTheFalse(Node current, DataEntry data) {
 		
 		
 		Probability proba = new Probability(data);
 		
 		double firstResult = proba.ObtainTheFalseCurrentNodeValue();
 		double secondResult = proba.ObtainTheFalseCurrentValues();
-		double lastNodeFalseResult = Root.getDataEntry().getLastNodeFalse().getSecond();
-		double lastNodeTrueResult = Root.getDataEntry().getLastNodeFalse().getFirst();
+		double lastNodeFalseResult = current.getPrevious().getDataEntry().getLastNodeFalse().getSecond();
+		double lastNodeTrueResult = current.getPrevious().getDataEntry().getLastNodeFalse().getFirst();
 		double res = calculs(firstResult, lastNodeFalseResult, secondResult, lastNodeTrueResult);
 		return res;
 		 
