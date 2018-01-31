@@ -5,7 +5,9 @@ public class Node {
 	private DataEntry data ;
 	private Node previous,right,left;
 	private String nodeName;
+	private int lambda = 1;
 	
+	private double trueResult,falseResult;
 	
 	public Node(String nodeName, DataEntry dataEntry) {
 		this.nodeName = nodeName;
@@ -42,6 +44,20 @@ public class Node {
 	
 	public DataEntry getDataEntry(){
 		return this.data;
+	}
+
+	public int getLamda() {
+		// TODO Auto-generated method stub
+		return this.lambda;
+	}
+
+	public void setTrueResult(double trueResult) {
+		this.trueResult = trueResult;	
+	}
+
+	public void setFalseResult(double falseResult) {
+		this.falseResult = falseResult;
+		
 	}
 
 	

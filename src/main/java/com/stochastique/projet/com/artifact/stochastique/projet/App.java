@@ -8,6 +8,7 @@ public class App
 {
     public static void main( String[] args )
     {
+    	
     	DataEntry dataEntry = new DataEntry(0.7, 0.3);
 		Node root = new Node("A",dataEntry);
 		
@@ -28,6 +29,7 @@ public class App
 		engine.run();
 		
 		engine.Display();
+		
 		
     }
 }

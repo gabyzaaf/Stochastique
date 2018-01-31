@@ -87,4 +87,14 @@ public class CalculUnitTest {
 		
 		Assert.assertEquals(lastNodeAdded,engine.ObtainTheLastRightNode());
 	}
+	
+	@Test
+	public void should_initialize_all_the_lambda_to_one(){
+		DataEntry dataEntry = new DataEntry(0.7, 0.3);
+		Node root = new Node("A",dataEntry);
+		
+		Assert.assertEquals(root.getLamda(),1);
+	}
+	
+	
 }

@@ -34,7 +34,9 @@ public class NodeEngine {
 				nodes.add(current.getRight());
 			}
 			double trueResult = MakeCalculForTheTrue(current.getDataEntry());
+			current.setTrueResult(trueResult);
 			double falseResult = MakeCalculForTheFalse(current.getDataEntry());
+			current.setFalseResult(falseResult);
 			nodesResults.add(new ResultDatas(current.getNames(),trueResult,falseResult));
 			nodes.remove(0);
 		}
@@ -88,9 +90,9 @@ public class NodeEngine {
 
 
 	public Node ObtainTheLastRightNode() {
-		Node tmp = null;
-		while(Root.getRight() != null){
-			tmp = Root.getRight();
+		Node tmp = Root.getRight();
+		while( tmp.getRight() != null){
+			tmp = tmp.getRight();
 		}
 		return tmp;
 	}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="6" failures="0" name="com.stochastique.projet.com.artifact.stochastique.projet.CalculUnitTest" time="0.005" errors="0" skipped="0">
+<testsuite tests="6" failures="0" name="com.stochastique.projet.com.artifact.stochastique.projet.CalculUnitTest" time="0.006" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home/jre/lib"/>
@@ -26,7 +26,7 @@
 "/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="os.name" value="Mac OS X"/>
-    <property name="classworlds.conf" value="/Users/zaafranigabriel/Documents/workspace/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf2107919880105314741.tmp"/>
+    <property name="classworlds.conf" value="/Users/zaafranigabriel/Documents/workspace/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf7534476007292491832.tmp"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/Users/zaafranigabriel/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -62,10 +62,10 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.stochastique.projet.com.artifact.stochastique.projet.CalculUnitTest" name="should_calcul_the_first_mathematic_formule" time="0.004"/>
-  <testcase classname="com.stochastique.projet.com.artifact.stochastique.projet.CalculUnitTest" name="should_create_nodes_for_and_display_of_the_all" time="0"/>
-  <testcase classname="com.stochastique.projet.com.artifact.stochastique.projet.CalculUnitTest" name="should_create_node_and_make_the_calcule_for_v2_is_true_or_false" time="0"/>
-  <testcase classname="com.stochastique.projet.com.artifact.stochastique.projet.CalculUnitTest" name="should_give_the_probability" time="0"/>
-  <testcase classname="com.stochastique.projet.com.artifact.stochastique.projet.CalculUnitTest" name="should_compare_the_value_calculated_and_the_value_stored" time="0.001"/>
-  <testcase classname="com.stochastique.projet.com.artifact.stochastique.projet.CalculUnitTest" name="should_calcul_the_second_mathematic_formule" time="0"/>
+  <testcase classname="com.stochastique.projet.com.artifact.stochastique.projet.CalculUnitTest" name="should_obtain_the_last_node_added" time="0.004"/>
+  <testcase classname="com.stochastique.projet.com.artifact.stochastique.projet.CalculUnitTest" name="should_verify_The_result_for_the_node_b" time="0.001"/>
+  <testcase classname="com.stochastique.projet.com.artifact.stochastique.projet.CalculUnitTest" name="should_obtain_the_last_node_values_True_or_false" time="0"/>
+  <testcase classname="com.stochastique.projet.com.artifact.stochastique.projet.CalculUnitTest" name="should_create_validate_the_dataEntry_for_each_case" time="0"/>
+  <testcase classname="com.stochastique.projet.com.artifact.stochastique.projet.CalculUnitTest" name="should_calcule_the_probabilities_for_the_current_node_is_false" time="0"/>
+  <testcase classname="com.stochastique.projet.com.artifact.stochastique.projet.CalculUnitTest" name="should_calcule_the_probabilities_for_the_current_node_is_true" time="0.001"/>
 </testsuite>
