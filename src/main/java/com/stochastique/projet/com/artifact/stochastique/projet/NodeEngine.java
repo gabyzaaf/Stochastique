@@ -2,6 +2,8 @@ package com.stochastique.projet.com.artifact.stochastique.projet;
 
 import java.util.ArrayList;
 
+import junit.framework.Assert;
+
 
 
 public class NodeEngine {
@@ -95,6 +97,28 @@ public class NodeEngine {
 			tmp = tmp.getRight();
 		}
 		return tmp;
+	}
+
+
+
+	public double MakeCalculForTruePropagation(Node node, DataEntry dataNext) {
+		Probability proba = new Probability(dataNext);
+		double firstResult = proba.ObtainTheCurrentNodeValueIsTrue();
+		double currentLambdaTrue = node.getLamdaTrue();
+		double thirdresult = proba.ObtainTheCurrentNodeValueIsFalse();
+		double currentLambdaFalse = node.getLamdaFalse();
+		return calculs(firstResult,currentLambdaTrue,thirdresult,currentLambdaFalse);
+	}
+
+
+
+	public double MakeCalculForFalsePropagation(Node node, DataEntry dataNext) {
+		Probability proba = new Probability(dataNext);
+		double firstValue = proba.ObtainTheFalseCurrentNodeValue();
+		double lambdaTrueValues = node.getLamdaTrue();
+		double thirdValue = proba.ObtainTheFalseCurrentValues();
+		double currentLambdaFalse = node.getLamdaFalse();
+		return calculs(firstValue,lambdaTrueValues,thirdValue,currentLambdaFalse);
 	}
 
 
