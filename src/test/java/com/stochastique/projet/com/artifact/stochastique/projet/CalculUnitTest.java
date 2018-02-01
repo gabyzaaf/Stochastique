@@ -93,8 +93,8 @@ public class CalculUnitTest {
 		DataEntry dataEntry = new DataEntry(0.7, 0.3);
 		Node root = new Node("A",dataEntry);
 		
-		Assert.assertEquals(root.getLamdaTrue(),0);
-		Assert.assertEquals(root.getLamdaFalse(),1);
+		Assert.assertEquals(root.getLamdaTrue(),0.0);
+		Assert.assertEquals(root.getLamdaFalse(),1.0);
 	}
 	
 	@Test
@@ -121,5 +121,42 @@ public class CalculUnitTest {
 		NodeEngine engine = new NodeEngine(null);
 		Assert.assertEquals(0.25,engine.MakeCalculForFalsePropagation(node,dataNext));
 	}
+	
+	@Test
+	public void should_found_the_D_node(){
+		DataEntry dataEntry = new DataEntry(0.7, 0.3);
+		Node root = new Node("A",dataEntry);
+		DataEntry dataNextForB = new DataEntry(0.7, 0.3, 0.4,0.6);
+		root.next(root,new Node("B",dataNextForB));
+		DataEntry dataNextForC = new DataEntry(0.6, 0.4, 0.3,0.7);
+		root.next(root, new Node("C",dataNextForC));
+		NodeEngine engine = new NodeEngine(root);
+		Node lastNodeAdded = engine.ObtainTheLastRightNode();
+		DataEntry dataNextForD = new DataEntry(0.25, 0.75, 0.7,0.3);
+		Node nodeD = new Node("D",dataNextForD);
+		lastNodeAdded.next(lastNodeAdded, nodeD);
+		
+		Assert.assertEquals(engine.ObtainSpecificNode("D"),nodeD);
+	}
+	
+	@Test
+	public void should_verify_the_previous_node_is_not_verify(){
+		DataEntry dataEntry = new DataEntry(0.7, 0.3);
+		Node root = new Node("A",dataEntry);
+		DataEntry dataNextForB = new DataEntry(0.7, 0.3, 0.4,0.6);
+		root.next(root,new Node("B",dataNextForB));
+		DataEntry dataNextForC = new DataEntry(0.6, 0.4, 0.3,0.7);
+		root.next(root, new Node("C",dataNextForC));
+		NodeEngine engine = new NodeEngine(root);
+		Node lastNodeAdded = engine.ObtainTheLastRightNode();
+		DataEntry dataNextForD = new DataEntry(0.25, 0.75, 0.7,0.3);
+		Node nodeD = new Node("D",dataNextForD);
+		lastNodeAdded.next(lastNodeAdded, nodeD);
+		
+		Assert.assertEquals(false,nodeD.previousNodeAlreadyChecked());
+		
+	}
+	
+	
 	
 }

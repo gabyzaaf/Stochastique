@@ -123,6 +123,51 @@ public class NodeEngine {
 
 
 
+	public Node ObtainSpecificNode(String nodeName) {
+		nodes.clear();
+		if(Root.getRight() != null){
+			nodes.add(Root.getRight());
+		}
+		if(Root.getLeft() != null){
+			nodes.add(Root.getLeft());
+		}
+		
+		while(nodes.size() != 0){
+			Node tmp = nodes.get(0);
+			if(tmp.getNames().equals(nodeName)){
+				nodes.clear();
+				return tmp;
+			}
+			if(tmp.getRight() != null){
+				nodes.add(tmp.getRight());
+			}
+			if(tmp.getLeft() != null){
+				nodes.add(tmp.getLeft());
+			}
+			nodes.remove(0);
+		}
+		return null;
+	}
+
+
+
+	public void runPropagation() {
+		Node nodeForBeginPropagation = ObtainSpecificNode("D");
+		if(!nodeForBeginPropagation.previousNodeAlreadyChecked()){
+			double truePropagation = MakeCalculForTruePropagation(nodeForBeginPropagation, nodeForBeginPropagation.getDataEntry());
+			double falsePropagation = MakeCalculForFalsePropagation(nodeForBeginPropagation, nodeForBeginPropagation.getDataEntry());
+			nodeForBeginPropagation.checkThePreviousNodeToTrue();
+			// set The Value To the Previous Node.
+			
+			// Calcule Pi * Lambda 
+			
+			// And change the node
+		}
+		
+	}
+
+
+
 	
 	
 

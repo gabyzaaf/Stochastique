@@ -30,6 +30,8 @@ public class App
 		
 		engine.Display();
 		
+		engine.runPropagation();
+		
 		
     }
 }

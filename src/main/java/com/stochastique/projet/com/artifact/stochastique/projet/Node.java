@@ -5,8 +5,9 @@ public class Node {
 	private DataEntry data ;
 	private Node previous,right,left;
 	private String nodeName;
-	private int lambdaTrue = 0;
-	private int lambdaFalse = 1;
+	private double lambdaTrue = 0;
+	private double lambdaFalse = 1;
+	private boolean state;
 	
 	private double trueResult,falseResult;
 	
@@ -51,12 +52,12 @@ public class Node {
 		return this.data;
 	}
 
-	public int getLamdaTrue() {
+	public double getLamdaTrue() {
 		// TODO Auto-generated method stub
 		return this.lambdaTrue;
 	}
 
-	public int getLamdaFalse() {
+	public double getLamdaFalse() {
 		// TODO Auto-generated method stub
 		return this.lambdaFalse;
 	}
@@ -75,6 +76,31 @@ public class Node {
 		return this.previous;
 	}
 
+	public boolean previousNodeAlreadyChecked() {
+		if(this.previous == null){
+			return false;
+		}
+		return this.previous.getState();
+	}
+
+	public boolean getState() {
+		// TODO Auto-generated method stub
+		return this.state;
+	}
+
+	public void checkThePreviousNodeToTrue() {
+		if(this.previous != null){
+			this.previous.setState(true);
+		}
+		
+	}
+
+	public void setState(boolean stateValue) {
+		this.state = stateValue;
+		
+	}
+
+	
 	
 
 	
