@@ -100,6 +100,38 @@ public class Node {
 		
 	}
 
+	public void setTrueLambdaToThePreviousNode(double truePropagation) {
+		this.lambdaTrue = truePropagation;
+	}
+
+	public void setFalseLambdaToThePreviousNode(double falsePropagation) {
+		this.lambdaFalse = falsePropagation;
+	}
+
+	public double getTrueResult() {
+		// TODO Auto-generated method stub
+		return this.trueResult;
+	}
+
+	public double getFalseResult() {
+		// TODO Auto-generated method stub
+		return this.falseResult;
+	}
+
+	
+
+	public boolean rightIsChecked() {
+		return this.right.getState();
+	}
+
+	public boolean leftIsChecked() {
+		return this.left.getState();
+	}
+
+	
+
+	
+
 	
 	
 

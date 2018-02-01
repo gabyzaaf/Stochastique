@@ -23,14 +23,22 @@ public class App
 		Node lastNodeAdded = engine.ObtainTheLastRightNode();
 		
 		DataEntry dataNextForD = new DataEntry(0.25, 0.75, 0.7,0.3);
-		
+
 		lastNodeAdded.next(lastNodeAdded, new Node("D",dataNextForD));
+		
+		DataEntry dataNextForE = new DataEntry(0.5, 0.5, 0.9,0.1);
+		lastNodeAdded.next(lastNodeAdded, new Node("E",dataNextForE));
+		
 		
 		engine.run();
 		
 		engine.Display();
 		
 		engine.runPropagation();
+		
+		
+		
+		engine.DisplayPropagation();
 		
 		
     }

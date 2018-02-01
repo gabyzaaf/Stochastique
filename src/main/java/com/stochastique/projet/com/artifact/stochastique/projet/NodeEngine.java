@@ -2,7 +2,7 @@ package com.stochastique.projet.com.artifact.stochastique.projet;
 
 import java.util.ArrayList;
 
-import junit.framework.Assert;
+
 
 
 
@@ -11,7 +11,7 @@ public class NodeEngine {
 	public static Node Root;
 	private ArrayList<Node> nodes = new ArrayList<Node>();
 	private ArrayList<ResultDatas> nodesResults = new ArrayList<ResultDatas>();
-	
+	private ArrayList<LambdaResult> lambdaResult = new ArrayList<LambdaResult>();
 	public NodeEngine(Node root) {
 		Root = root;
 	}
@@ -152,17 +152,56 @@ public class NodeEngine {
 
 
 	public void runPropagation() {
+		nodes.clear();
 		Node nodeForBeginPropagation = ObtainSpecificNode("D");
-		if(!nodeForBeginPropagation.previousNodeAlreadyChecked()){
-			double truePropagation = MakeCalculForTruePropagation(nodeForBeginPropagation, nodeForBeginPropagation.getDataEntry());
-			double falsePropagation = MakeCalculForFalsePropagation(nodeForBeginPropagation, nodeForBeginPropagation.getDataEntry());
-			nodeForBeginPropagation.checkThePreviousNodeToTrue();
-			// set The Value To the Previous Node.
-			
-			// Calcule Pi * Lambda 
-			
-			// And change the node
+		
+		nodes.add(nodeForBeginPropagation);
+		
+		while(!nodes.isEmpty()){
+			Node tmp = nodes.get(0);
+			if(!tmp.previousNodeAlreadyChecked()){
+				if(!tmp.getNames().equalsIgnoreCase("A")){
+					double truePropagation = MakeCalculForTruePropagation(tmp, tmp.getDataEntry());
+					double falsePropagation = MakeCalculForFalsePropagation(tmp, tmp.getDataEntry());
+					tmp.checkThePreviousNodeToTrue();
+					// set The Value To the Previous Node.
+					tmp.setTrueLambdaToThePreviousNode(truePropagation);
+					tmp.setFalseLambdaToThePreviousNode(falsePropagation);
+					// Calcule Pi * Lambda 
+					double lambdaTrueResult = tmp.getLamdaTrue();
+					double lambdaFalseResult = tmp.getLamdaFalse();
+					double pitrueResult = tmp.getTrueResult();
+					double pifalseResult = tmp.getFalseResult();
+					
+					double piLambdaResultTrue = lambdaTrueResult *pitrueResult;
+					double piLambdaResultFalse = lambdaFalseResult * pifalseResult;
+					
+					this.lambdaResult.add(new LambdaResult(tmp.getPrevious().getNames(),lambdaTrueResult, lambdaFalseResult, pitrueResult, pifalseResult));
+					this.nodes.add(tmp.getPrevious());
+				}
+				tmp.setState(true);
+				if(tmp.getRight() != null && !tmp.rightIsChecked()){
+					this.nodes.add(tmp.getRight());
+				}
+				
+				if(tmp.getLeft() != null && !tmp.leftIsChecked()){
+					this.nodes.add(tmp.getLeft());
+				}
+				this.nodes.remove(0);
+			}else{
+				if(this.nodes.size() != 0){
+					this.nodes.remove(0);
+				}
+			}
 		}
+		
+		
+	}
+
+
+
+	public void DisplayPropagation() {
+		this.lambdaResult.forEach( (k) -> {System.out.println(k);});
 		
 	}
 
