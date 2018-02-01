@@ -155,7 +155,12 @@ public class NodeEngine {
 		nodes.clear();
 		Node nodeForBeginPropagation = ObtainSpecificNode("D");
 		nodeForBeginPropagation.changeLambdaValues();
+		
+		Node nodeForSecondPropagation = ObtainSpecificNode("B");
+		nodeForSecondPropagation.changeLambdaValues();
+		
 		nodes.add(nodeForBeginPropagation);
+		nodes.add(nodeForSecondPropagation);
 		
 		while(!nodes.isEmpty()){
 			Node tmp = nodes.get(0);
@@ -190,7 +195,7 @@ public class NodeEngine {
 				this.nodes.remove(0);
 			}else{
 					Node node = nodes.get(0);
-					if(node.getLamdaTrue() == 1.0 && node.getLamdaFalse() == 1 && node.getState() == false){
+					if(node.getLamdaTrue() == 1 && node.getLamdaFalse() == 1 && node.getState() == false){
 						Node previous = node.getPrevious();
 						if(previous != null){
 							double truePropagation = MakeCalculForTruePropagation(previous, previous.getDataEntry());
@@ -206,7 +211,17 @@ public class NodeEngine {
 							this.nodes.remove(0);
 						}
 					}
-					this.nodes.remove(0);
+					if(node.getRight() != null && !node.rightIsChecked()){
+						this.nodes.add(node.getRight());
+					}
+					
+					if(node.getLeft() != null && !node.leftIsChecked()){
+						this.nodes.add(node.getLeft());
+					}
+					if(!nodes.isEmpty()){
+						this.nodes.remove(0);
+					}
+					
 			}
 		}
 		
