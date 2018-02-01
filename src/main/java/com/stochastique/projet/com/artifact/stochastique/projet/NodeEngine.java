@@ -154,7 +154,7 @@ public class NodeEngine {
 	public void runPropagation() {
 		nodes.clear();
 		Node nodeForBeginPropagation = ObtainSpecificNode("D");
-		
+		nodeForBeginPropagation.changeLambdaValues();
 		nodes.add(nodeForBeginPropagation);
 		
 		while(!nodes.isEmpty()){
@@ -189,9 +189,24 @@ public class NodeEngine {
 				}
 				this.nodes.remove(0);
 			}else{
-				if(this.nodes.size() != 0){
+					Node node = nodes.get(0);
+					if(node.getLamdaTrue() == 1.0 && node.getLamdaFalse() == 1 && node.getState() == false){
+						Node previous = node.getPrevious();
+						if(previous != null){
+							double truePropagation = MakeCalculForTruePropagation(previous, previous.getDataEntry());
+							double falsePropagation = MakeCalculForFalsePropagation(previous, previous.getDataEntry());
+							node.setTrueLambdaToThePreviousNode(truePropagation);
+							node.setFalseLambdaToThePreviousNode(falsePropagation);
+							
+							double lambdaTrueResult = node.getLamdaTrue();
+							double lambdaFalseResult = node.getLamdaFalse();
+							double pitrueResult = node.getTrueResult();
+							double pifalseResult = node.getFalseResult();
+							this.lambdaResult.add(new LambdaResult(node.getNames(),lambdaTrueResult, lambdaFalseResult, pitrueResult, pifalseResult));
+							this.nodes.remove(0);
+						}
+					}
 					this.nodes.remove(0);
-				}
 			}
 		}
 		

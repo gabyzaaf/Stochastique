@@ -5,7 +5,7 @@ public class Node {
 	private DataEntry data ;
 	private Node previous,right,left;
 	private String nodeName;
-	private double lambdaTrue = 0;
+	private double lambdaTrue = 1;
 	private double lambdaFalse = 1;
 	private boolean state;
 	
@@ -126,6 +126,12 @@ public class Node {
 
 	public boolean leftIsChecked() {
 		return this.left.getState();
+	}
+
+	public void changeLambdaValues() {
+		this.lambdaFalse = 1;
+		this.lambdaTrue = 0;
+		
 	}
 
 	
