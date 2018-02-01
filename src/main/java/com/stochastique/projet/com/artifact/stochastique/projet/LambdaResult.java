@@ -20,10 +20,12 @@ public class LambdaResult {
 
 	@Override
 	public String toString() {
-		return "LambdaResult [name=" + name + ", lambdaTrueResult="
+		return "LambdaResult [name=" + name + ", Lambda(V)="
 				+ lambdaTrueResult + ", lambdaFalseResult=" + lambdaFalseResult
 				+ ", PitrueResult=" + PitrueResult + ", PifalseResult="
 				+ PifalseResult + "]";
+		
+		
 	}
 
 	

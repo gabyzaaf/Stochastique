@@ -26,8 +26,8 @@ public class ResultDatas  {
 
 	@Override
 	public String toString() {
-		return "ResultDatas [name=" + name + ", trueResult=" + trueResult
-				+ ", falseResult=" + falseResult + "]";
+		return "ResultDatas [NodeName=" + name + ", P(v)=" + trueResult
+				+ ", P(f)=" + falseResult + "]";
 	}
 	
 	
