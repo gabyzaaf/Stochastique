@@ -88,19 +88,13 @@ public class CalculUnitTest {
 		Assert.assertEquals(lastNodeAdded,engine.ObtainTheLastRightNode());
 	}
 	
-	@Test
-	public void should_initialize_all_the_lambda_to_zero_for_true_and_one_for_false(){
-		DataEntry dataEntry = new DataEntry(0.7, 0.3);
-		Node root = new Node("A",dataEntry);
-		
-		Assert.assertEquals(root.getLamdaTrue(),0.0);
-		Assert.assertEquals(root.getLamdaFalse(),1.0);
-	}
+	
 	
 	@Test
 	public void should_calcul_the_message_propagation_node_D_to_C_for_true(){
 		DataEntry dataNext = new DataEntry(0.25, 0.7, 0.75,0.3);
 		Node node = new Node("D",dataNext);
+		node.changeLambdaValues();
 		NodeEngine engine = new NodeEngine(null);
 		Assert.assertEquals(0.7,engine.MakeCalculForTruePropagation(node,dataNext));
 	}
@@ -118,6 +112,7 @@ public class CalculUnitTest {
 	public void should_calcul_the_message_propagation_node_D_to_C_for_false(){
 		DataEntry dataNext = new DataEntry(0.25, 0.7, 0.75,0.3);
 		Node node = new Node("D",dataNext);
+		node.changeLambdaValues();
 		NodeEngine engine = new NodeEngine(null);
 		Assert.assertEquals(0.25,engine.MakeCalculForFalsePropagation(node,dataNext));
 	}

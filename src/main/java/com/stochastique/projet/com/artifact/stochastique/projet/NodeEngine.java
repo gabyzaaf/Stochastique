@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 
 
-
 public class NodeEngine {
 
 	public static Node Root;
@@ -181,7 +180,7 @@ public class NodeEngine {
 					double piLambdaResultTrue = lambdaTrueResult *pitrueResult;
 					double piLambdaResultFalse = lambdaFalseResult * pifalseResult;
 					
-					this.lambdaResult.add(new LambdaResult(tmp.getPrevious().getNames(),lambdaTrueResult, lambdaFalseResult, pitrueResult, pifalseResult));
+					this.lambdaResult.add(new LambdaResult(tmp.getPrevious().getNames(),lambdaTrueResult, lambdaFalseResult, pitrueResult, pifalseResult,truePropagation,falsePropagation));
 					this.nodes.add(tmp.getPrevious());
 				}
 				tmp.setState(true);
@@ -207,7 +206,7 @@ public class NodeEngine {
 							double lambdaFalseResult = node.getLamdaFalse();
 							double pitrueResult = node.getTrueResult();
 							double pifalseResult = node.getFalseResult();
-							this.lambdaResult.add(new LambdaResult(node.getNames(),lambdaTrueResult, lambdaFalseResult, pitrueResult, pifalseResult));
+							this.lambdaResult.add(new LambdaResult(node.getNames(),lambdaTrueResult, lambdaFalseResult, pitrueResult, pifalseResult,truePropagation,falsePropagation));
 							this.nodes.remove(0);
 						}
 					}
